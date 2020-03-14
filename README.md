@@ -1,6 +1,6 @@
-# OpenAPI Generator Bazel
+# OpenAPI Bazel
 
-This repo was created to integrate the OpenAPI code generation CLI with Bazel.
+Bazel rule for OpenAPI generator
 
 ## Quickstart
 

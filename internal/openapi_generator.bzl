@@ -1,3 +1,4 @@
+# Copyright 2020 dizk
 # Copyright 2019 OpenAPI-Generator-Bazel Contributors
 
 load("@bazel_tools//tools/build_defs/repo:jvm.bzl", "jvm_maven_import_external")
