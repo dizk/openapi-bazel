@@ -80,7 +80,8 @@ def _impl(ctx):
         inputs = inputs,
         outputs = [declared_dir],
         executable = str(ctx.attr._jdk[java_common.JavaRuntimeInfo].java_executable_exec_path),
-        arguments = _generator_arguments(ctx, declared_dir)
+        arguments = _generator_arguments(ctx, declared_dir),
+        tools = ctx.files._jdk
     )
 
     srcs = declared_dir.path
