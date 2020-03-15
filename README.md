@@ -1,3 +1,5 @@
+![](https://github.com/dizk/rules_openapi/workflows/main/badge.svg)
+
 # OpenAPI Bazel
 
 Bazel rule for OpenAPI generator
