@@ -24,3 +24,5 @@ Then in your `BUILD` file, just add the following so the rules will be available
 ```python
 load("@rules_openapi//openapi:openapi.bzl", "openapi_generator")
 ```
+
+Orginally a fork of https://github.com/OpenAPITools/openapi-generator-bazel
