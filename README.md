@@ -1,6 +1,6 @@
 # OpenAPI Bazel
 
-![](https://github.com/dizk/rules_openapi/workflows/.github/workflows/main.yml/badge.svg)
+![](https://github.com/dizk/rules_openapi/workflows/main/badge.svg)
 
 Bazel rule for OpenAPI generator
 
