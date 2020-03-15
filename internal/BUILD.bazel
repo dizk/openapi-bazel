@@ -1,8 +1,0 @@
-# Copyright 2019 OpenAPI-Generator-Bazel Contributors
-
-package(default_visibility = ["//visibility:public"])
-
-exports_files([
-    "BUILD.bazel",
-    "openapi_generator.bzl",
-])

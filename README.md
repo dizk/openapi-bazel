@@ -2,39 +2,29 @@
 
 Bazel rule for OpenAPI generator
 
-## Quickstart
+## Getting started
 
-To use the Bazel bindings provided by this repo within a Bazel workspace,
-you must do the following steps:
+To use the OpenAPI rules, add the following to your projects `WORKSPACE` file
 
-1. Add the following code to your WORKSPACE file at the root of your repository
+```python
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
-   ```
-   load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
+RULES_OPEN_API_VERSION = "8ba2fcf8509decf448ba458c8b3af3156fa3e364"
+RULES_OPEN_API_SHA256 = "f6c334cf891d4a65711e1741f88440fdc3ba59d873cb818a218b800ad27d60a9"
 
-   http_archive(
-       name = "openapi_tools_generator_bazel",
-       sha256 = "bdec4feb06144a1dc0a6f9955de9f0079a98b7442275bc84a4fd00452437c945",
-       urls = ["https://github.com/OpenAPITools/openapi-generator-bazel/releases/download/0.1.0/openapi-tools-generator-bazel-0.1.0.tar.gz"],
-   )
-
-   load("@openapi_tools_generator_bazel//:defs.bzl", "openapi_tools_generator_bazel_repositories")
-
-   # You can provide any version of the CLI that has been uploaded to Maven
-   openapi_tools_generator_bazel_repositories(
-       openapi_generator_cli_version = "4.1.0",
-   )
-   ```
-
-2. Create a BUILD.bazel file next to the .yaml file you wish to generate code from.
-   The below example generates a go library within a generated directory named `petstore_go`
-
-```
-load("@openapi_tools_generator_bazel//:defs.bzl", "openapi_generator")
-
-openapi_generator(
-    name = "petstore_go",
-    generator = "go",
-    spec = "petstore.yaml",
+http_archive(
+    name = "bazel_openapi",
+    strip_prefix = "rules_openapi-%s" % RULES_OPEN_API_VERSION,
+    url = "https://github.com/dizk/openapi-bazel/archive/%s.tar.gz" % RULES_OPEN_API_VERSION,
+    sha256 = RULES_OPEN_API_SHA256
 )
+
+load("@bazel_openapi//openapi:openapi.bzl", "openapi_bazel_repositories")
+openapi_bazel_repositories()
+```
+
+Then in your `BUILD` file, just add the following so the rules will be available:
+
+```python
+load("@io_bazel_rules_openapi//openapi:openapi.bzl", "openapi_gen")
 ```
