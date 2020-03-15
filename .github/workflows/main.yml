@@ -14,13 +14,6 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
-
-      - name: Mount bazel cache
-        uses: actions/cache@v1
-        with:
-          path: $HOME/.cache/bazel
-          key: bazel-${{ matrix.os }}
-
       - name: Build
         run: |
           bazelisk --output_user_root="${HOME}/.cache/bazel" build //...
